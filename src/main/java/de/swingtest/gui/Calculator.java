@@ -147,11 +147,6 @@ public class Calculator extends JFrame {
         // Exit button is to close the calculator and terminate the program.
         JButton buttonExit = new JButton("EXIT");
         buttonExit.setMnemonic(KeyEvent.VK_C);
-        buttonExit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
         panel.add(buttonExit);
         return panel;
 
