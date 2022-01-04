@@ -22,9 +22,7 @@ public class TestComplexSwingGui extends AssertJSwingJUnitTestCase {
 
     private FrameFixture window;
     private ComplexSwingGui frame;
-
-    boolean firstRun = true;
-    long timestamp = 0L;
+    String screenshot_directory = "Screenshots";
 
     @Override
     protected void onSetUp() {
@@ -45,54 +43,54 @@ public class TestComplexSwingGui extends AssertJSwingJUnitTestCase {
         Robot robot = robot();
         Random random = new Random();
 
-        for (int i = 0; i < 100; i++) {
+        for (int timestep = 0; timestep < 100; timestep++) {
+
             long startTime = System.currentTimeMillis();
 
+            // Generate random click coordinates
             Rectangle location = frame.getBounds();
-
             Point clickPosition = new Point();
             clickPosition.x = random.nextInt(location.width) + location.x;
             clickPosition.y = random.nextInt(location.height) + location.y;
 
             // Take and save screenshot
-            takeScreenshot(location, i, clickPosition);
+            String filename = "screenshot_" + timestep + ".png";
+            takeScreenshot(location, screenshot_directory, filename, clickPosition);
 
+            // Perform click
             robot.click(clickPosition, MouseButton.LEFT_BUTTON, 1);
 
-            long estimatedTime = System.currentTimeMillis() - startTime;
-            System.out.println(estimatedTime);
-
+            // Print elapsed time
+            System.out.println(System.currentTimeMillis() - startTime);
         }
     }
 
-    public void takeScreenshot(Rectangle location, int i, Point click_Position) {
+    public static void takeScreenshot(Rectangle location, String directoryname, String filename, Point click_Position) {
 
         try {
+            // Take screenshot
             ScreenshotTaker screenshotTaker = new ScreenshotTaker();
-
             BufferedImage image_screen = screenshotTaker.takeDesktopScreenshot();
 
-            // Add click position as a point to the screenshot
+            // Add click position as a red point to the screenshot image
             final Graphics2D graphics2D = image_screen.createGraphics();
-
             graphics2D.setPaint(Color.RED);
             int diameter = 5;
             graphics2D.fillOval(click_Position.x, click_Position.y, diameter, diameter);
             graphics2D.dispose();
 
+            // Crop screenshot image to app size
             BufferedImage image = image_screen.getSubimage(location.x, location.y, location.width, location.height);
 
-            String screenshot_directory = "Screenshots";
-
-            // Create Screenshots directory if it does not exist yet
-            File directory = new File(screenshot_directory);
+            // Create screenshots directory if it does not exist yet
+            File directory = new File(directoryname);
             if (!directory.exists()) {
                 directory.mkdir();
             }
 
-            // Save Screenshot
-            File f = new File(screenshot_directory, "screenshot_" + i + ".png");
-            ImageIO.write(image, "PNG", f);
+            // Save screenshot to file
+            File file = new File(directoryname, filename);
+            ImageIO.write(image, "PNG", file);
 
         } catch (Exception e) {
             e.printStackTrace();
