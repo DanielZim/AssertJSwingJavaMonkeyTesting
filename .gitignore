@@ -1,3 +1,7 @@
+# Ignore Screenshots
+Screenshots/
+
+# Java stuff starts here
 /target
 /.settings
 /.classpath
