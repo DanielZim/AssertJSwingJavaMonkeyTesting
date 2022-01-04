@@ -19,7 +19,7 @@ import org.assertj.swing.image.ScreenshotTaker;
 import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
 import org.junit.Test;
 
-public class TestComplexSwingGui extends AssertJSwingJUnitTestCase {
+public class TestSwingGui extends AssertJSwingJUnitTestCase {
 
     private FrameFixture window;
     private JFrame frame;
