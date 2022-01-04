@@ -76,8 +76,8 @@ public class TestSwingGui extends AssertJSwingJUnitTestCase {
             // Add click position as a red point to the screenshot image
             final Graphics2D graphics2D = image_screen.createGraphics();
             graphics2D.setPaint(Color.RED);
-            int diameter = 5;
-            graphics2D.fillOval(click_Position.x, click_Position.y, diameter, diameter);
+            int radius = 3;
+            graphics2D.fillOval(click_Position.x - radius, click_Position.y - radius, 2 * radius, 2 * radius);
             graphics2D.dispose();
 
             // Crop screenshot image to app size
