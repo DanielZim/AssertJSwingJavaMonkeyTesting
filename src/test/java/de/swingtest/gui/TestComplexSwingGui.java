@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Random;
+import javax.swing.JFrame;
 
 import javax.imageio.ImageIO;
 
@@ -21,7 +22,7 @@ import org.junit.Test;
 public class TestComplexSwingGui extends AssertJSwingJUnitTestCase {
 
     private FrameFixture window;
-    private ComplexSwingGui frame;
+    private JFrame frame;
     String screenshot_directory = "Screenshots";
 
     @Override
