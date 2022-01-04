@@ -27,7 +27,7 @@ public class TestSwingGui extends AssertJSwingJUnitTestCase {
 
     @Override
     protected void onSetUp() {
-        frame = GuiActionRunner.execute(() -> new ComplexSwingGui());
+        frame = GuiActionRunner.execute(() -> new Calculator());
 
         window = new FrameFixture(robot(), frame);
         window.show();
