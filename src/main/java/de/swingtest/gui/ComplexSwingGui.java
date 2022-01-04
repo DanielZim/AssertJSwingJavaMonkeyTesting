@@ -41,6 +41,10 @@ public class ComplexSwingGui extends JFrame {
     private JButton exportBtn;
     private DefaultTableModel model;
 
+    public static void main(String[] args) {
+        new ComplexSwingGui();
+    }
+
     public ComplexSwingGui() {
         init();
     }
