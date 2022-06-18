@@ -192,9 +192,6 @@ public class ComplexSwingGui extends JFrame {
 
         JButton closeBtn = new JButton("Schließen");
         closeBtn.setName("closeBtn");
-        closeBtn.addActionListener(event -> {
-            System.exit(0);
-        });
         btnPanel2.add(closeBtn);
         this.add(btnPanel2);
     }
