@@ -8,7 +8,6 @@ def test_run(number):
 
 if __name__ == '__main__':
     count = multiprocessing.cpu_count()
-    count = 40
     pool = multiprocessing.Pool(processes=count)
     pool.map(test_run, [i for i in range(count)])
 
